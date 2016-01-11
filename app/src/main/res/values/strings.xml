@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MK8900 Temp</string>
+
+    <string name="changebackgroundbuttoncaption">Change background</string>
+    <string name="changeforegroundbutton">Change foreground</string>
+    <string name="fontsize">Font size</string>
+    <string name="leftpadding">Left Padding</string>
+    <string name="rightpadding">Right Padding</string>
+    <string name="toppadding">Top Padding</string>
+    <string name="bottompadding">Bottom Padding</string>
+    <string name="settings">Settings</string>
+
+</resources>
