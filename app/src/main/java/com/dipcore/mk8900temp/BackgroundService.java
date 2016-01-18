@@ -1,8 +1,10 @@
 package com.dipcore.mk8900temp;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.os.Handler;
@@ -48,6 +50,9 @@ public class BackgroundService extends Service {
         Log = new LogA(context);
         mUsbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);
 
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Constants.CMD);
+        registerReceiver(receiver, filter);
     }
 
     @Override
@@ -244,6 +249,17 @@ public class BackgroundService extends Service {
 
     }
 
-
+    private final BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if(action.equals(Constants.CMD)){
+                String cmd = intent.getStringExtra("cmd");
+                if (!cmd.isEmpty()) {
+                    writeToSerial(cmd);
+                }
+            }
+        }
+    };
 
 }

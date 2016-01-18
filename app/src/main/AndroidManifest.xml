@@ -32,6 +32,9 @@
             android:name=".BackgroundService"
             android:enabled="true"
             android:exported="true" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
         </service>
 
         <receiver
@@ -39,7 +42,7 @@
             android:enabled="true"
             android:exported="false" >
             <intent-filter android:priority="1000" >
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.dipcore.mk8900temp.CMD" />
             </intent-filter>
         </receiver>
 

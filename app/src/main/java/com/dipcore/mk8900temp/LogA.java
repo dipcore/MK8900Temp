@@ -7,8 +7,6 @@ public class LogA {
 
     Context context;
 
-    public static String MESSAGE_ID = "com.dipcore.mk8900temp.message";
-
     public LogA(Context context) {
         this.context = context;
     }
@@ -26,7 +24,7 @@ public class LogA {
 
     private void display(String tag, String message){
         android.util.Log.d(tag, message);
-        Intent intent = new Intent(MESSAGE_ID);
+        Intent intent = new Intent(Constants.LOG_MESSAGE);
         intent.putExtra("value", message);
         context.sendBroadcast(intent);
     }
